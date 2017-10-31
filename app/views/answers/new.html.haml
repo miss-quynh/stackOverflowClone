@@ -1,0 +1,8 @@
+%h2 Answer Form
+
+= form_for [@question,@answer] do |f|
+  %h4
+    = f.label :body
+    = f.text_area :body, rows: 6, cols: 80
+
+  = f.submit

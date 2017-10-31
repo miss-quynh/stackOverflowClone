@@ -1,0 +1,18 @@
+%h2 Question Show
+
+%ul
+  Title:
+  = @question.title
+  %br
+
+  Body:
+  = @question.body
+
+  - if @answers.any?
+    %ul
+      = @answers.each do |answer|
+      %li
+        = answer.body
+
+
+=link_to 'Post Answer', new_answer_path
