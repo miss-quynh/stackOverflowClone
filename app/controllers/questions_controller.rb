@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
   def create
     if logged_in?
       @question = Question.new(question_params)
+      @answers = Answer.where(question_id: @question.id)
       current_user.questions << @question
       redirect_to question_path(@question)
     else

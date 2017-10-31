@@ -9,11 +9,12 @@ class AnswersController < ApplicationController
   def create
     if logged_in?
       @answer = Answer.new(answer_params)
+      @question = Question.find(@answer.question_id)
       current_user.answers << @answer
-      redirect_to answer_path(@answer)
+      redirect_to question_path(@question)
     else
       @errors = ["You need to be logged in to post a answer."]
-      redirect_to new_answer_path
+      redirect_to new_question_answer_path
     end
   end
 
