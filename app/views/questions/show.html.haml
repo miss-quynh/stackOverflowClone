@@ -1,0 +1,11 @@
+%h2 Question Show
+
+%ul
+  Title:
+  = @question.title
+  %br
+
+  Body:
+  = @question.body
+
+=link_to 'Post Answer', new_answer_path
