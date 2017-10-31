@@ -5,33 +5,26 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  # questions#SHOW
   def show
     @question = Question.find(params[:id])
   end
 
+  # questions#NEW
   def new
     @question = Question.new
   end
 
-  def edit
-
-  end
-
+  # questions#CREATE
   def create
-    @question = Question.new(question_params)
-    if @question.save
-      redirect_to show_question_path(@question)
+    if logged_in?
+      @question = Question.new(question_params)
+      current_user.questions << @question
+      redirect_to question_path(@question)
     else
-
+      @errors = ["You need to be logged in to post a question."]
+      redirect_to new_question_path
     end
-  end
-
-  def update
-
-  end
-
-  def destroy
-
   end
 
   private

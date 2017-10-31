@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration[5.0]
     create_table :questions do |t|
       t.string :title, null: false
       t.text :body, null: false
-      t.references :user, null: false
+      t.integer :author_id, null: false
 
       t.timestamps
     end
