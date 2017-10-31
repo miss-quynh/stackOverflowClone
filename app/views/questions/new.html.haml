@@ -1,0 +1,12 @@
+%h2 What's Your Question?
+
+= form_for @question do |f|
+  %h4
+    = f.label :title
+    = f.text_field :title
+
+  %h4
+    = f.label :body
+    = f.text_area :body, rows: 6, cols: 80
+
+  = f.submit
